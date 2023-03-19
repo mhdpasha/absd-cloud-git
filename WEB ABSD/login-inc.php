@@ -2,11 +2,6 @@
 
 include 'connect.php';
 
-if ( isset($_SESSION['username'])) {
-	header("Location: ../index.php");
-	exit;
-}
-
 $username = "";
 
 if (isset($_POST['login'])) {

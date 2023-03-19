@@ -1,21 +1,6 @@
 <?php
 require 'connect.php';
 
-if ( !isset($_SESSION['username'])) {
-	header("Location: login/login.php");
-	exit;
-}
-
-$username = $_SESSION['username'];
-$sql = "SELECT username FROM users WHERE username = '$username'";
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
-  $user[] = $row;
-
-}
-
 function getData($query){
     global $conn;
 
@@ -97,6 +82,7 @@ function intend(){
 function hapus($id) {
     global $conn;
     mysqli_query($conn, "DELETE FROM file WHERE id = $id");
+
     return mysqli_affected_rows($conn);
 }
 

@@ -5,6 +5,21 @@ include 'connect.php';
 include 'query.php';
 ini_set('display_errors', 0); // Hide Error
 
+$username = $_SESSION['username'];
+$sql = "SELECT username FROM users WHERE username = '$username'";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+  $user[] = $row;
+
+}
+
+if ( !isset($_SESSION['username'])) {
+	header("Location: login/login.php");
+	exit;
+}
+
 // var_dump($_POST)
 
 ?>

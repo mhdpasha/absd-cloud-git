@@ -3,6 +3,11 @@
 session_start();
 include '../login-inc.php';
 
+if ( isset($_SESSION['username'])) {
+	header("Location: ../index.php");
+	exit;
+}
+
 ?>
 
 <!DOCTYPE html>
